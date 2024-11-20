@@ -22,6 +22,12 @@ spec:
         image: ghcr.io/ehfd/nvidia-dind:latest
         stdin: true
         tty: true
+        env:
+          # if set NVIDIA_VISIBLE_DEVICES and NVIDIA_DRIVER_CAPABILITIES , you can not set gpu resources limits
+          - name: NVIDIA_VISIBLE_DEVICES
+            value: all
+          - name: NVIDIA_DRIVER_CAPABILITIES
+            value: all
         securityContext:
           privileged: true
         resources:
